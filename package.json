@@ -1,0 +1,40 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elysiajs/cors": "latest",
+    "@elysiajs/eden": "latest",
+    "@elysiajs/websocket": "latest",
+    "@replit/ai-modelfarm": "latest",
+    "@sinclair/typebox": "latest",
+    "@sinclair/typebox-codegen": "latest",
+    "better-sqlite3": "latest",
+    "chalk": "^5.3.0",
+    "citty": "^0.1.5",
+    "consola": "^3.2.3",
+    "destr": "^2.0.2",
+    "elysia": "latest",
+    "jquery": "beta",
+    "magicast": "^0.3.3",
+    "node-fetch": "^3.3.1",
+    "unstorage": "^1.10.1",
+    "untun": "^0.1.3",
+    "xstate": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/jquery": "latest",
+    "@types/node": "^20.11.17",
+    "commander": "^12.0.0",
+    "typescript": "^5.3.3",
+    "bun": "latest",
+    "bun-repl": "latest"
+  }
+}

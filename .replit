@@ -1,0 +1,47 @@
+# compile = "sh -c 'bun build --compile ./src/index.ts --outfile server'"
+# run = ["node", "./dist"]
+run = "bun run --watch src/index.ts"
+entrypoint = "src/index.ts"
+# modules = ["nodejs-20:v12-20231130-57acee0"]
+hidden = [
+  ".config",
+  "bun.lockb",
+  ".upm",
+  ".codepark/temp",
+  ".codepark/.cache",
+  "tsconfig.json",
+  "dist",
+  ".local",
+  "*-lock.json",
+]
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", "bun.lockb", "bunfig.toml", ".config"]
+
+[nix]
+channel = "stable-23_11"
+
+[env]
+PATH = "/home/runner/$REPL_SLUG/.config/npm/node_global/bin:/home/runner/$REPL_SLUG/node_modules/.bin:/home/runner/$REPL_SLUG/.config/.bun/bin:/home/runner/$REPL_SLUG/.local/bin"
+XDG_CONFIG_DIR = "/home/runner/$REPL_SLUG/.config"
+XDG_CACHE_DIR = "/home/runner/$REPL_SLUG/.cache"
+npm_config_prefix = "/home/runner/$REPL_SLUG/.config/npm/node_global"
+BUN_INSTALL = "/home/runner/$REPL_SLUG/.config/.bun"
+
+[packager]
+language = "bun"
+[packager.features]
+enabledForHosting = false
+guessImports = true
+packageSearch = true
+
+[languages]
+[languages.javascript]
+pattern = "**/*.{ts,js,cjs,mts,mjs,cts,tsx,jsx}"
+[languages.javascript.languageServer]
+start = "typescript-language-server --stdio"
+
+# [deployment]
+# run = ["bun", "run", "src/index.ts"]
+# deploymentTarget = "cloudrun"
+# ignorePorts = false
