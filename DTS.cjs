@@ -1,17 +1,15 @@
-const DTS = (label = "") => async (path = "", id) => await Bun.file(path).json().then(data => {
-  return Bun.write("typings/" + label + "/" + id + ".d.ts", `
-export type ${label.toUpperCase() + "_" + id.toUpperCase()} = ${Bun.inspect(data)}
-  `).then(_ => {
-    return Bun.file("typings/" + label + "/index.d.ts")
-  })
-});
+const MAIN = (label = "") => async (path = "", id) => {
+  const outfile = Bun.file(path).json();
+  return await outfile.then(async data => {
+    const filePath = "typings/" + label + "/index.d.ts";
+    const LABEL = label.toUpperCase() + "_" + id.toUpperCase();
+    const MODEL_REFERENCE = Bun.inspect(data)
+    const TYPE_TEMPLATE = /* ts */`export type ${LABEL} = ${MODEL_REFERENCE}`
+    return Bun.write(filePath, TYPE_TEMPLATE).then(() => Bun.file(filePath)).catch(console.error)
+  });
+}
 
-// const cliGenerator = schema("cli");
+const DTS = (label = "") => MAIN(label);
 
-// cliGenerator("cli/cli.schema.json", "cli").catch(console.error)
-
-// cliGenerator("cli/env.schema.json", "env").catch(console.error)
-
-// cliGenerator("cli/shell.schema.json", "shell").catch(console.error)
 
 module.exports = DTS;
