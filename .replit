@@ -1,8 +1,5 @@
-# compile = "sh -c 'bun build --compile ./src/index.ts --outfile server'"
-# run = ["node", "./dist"]
 run = "bun run --watch src/index.ts"
 entrypoint = "src/index.ts"
-# modules = ["nodejs-20:v12-20231130-57acee0"]
 hidden = [
   ".config",
   "bun.lockb",
@@ -40,8 +37,3 @@ packageSearch = true
 pattern = "**/*.{ts,js,cjs,mts,mjs,cts,tsx,jsx}"
 [languages.javascript.languageServer]
 start = "typescript-language-server --stdio"
-
-# [deployment]
-# run = ["bun", "run", "src/index.ts"]
-# deploymentTarget = "cloudrun"
-# ignorePorts = false
